@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz Challenge!</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-  
+    <header>
+        <a href="" id="highscores">View Highscores</a>
+        <div class="card timer">
+            <div class="timer-text">
+                <div class="large-font timer-count">10 </div>
+                <h3> seconds remaining</h3>
+            </div>
+    </header>
+
+    <main>
+        <h1>Coding Quiz Challenge</h1>
+        <section id="stuff">
+            <div class="card word-guess">
+                <div class="large-font instructions">Try to answer the following code-related questions before the time runs out! Keep in mind that incorrect answers will penalize your score times by 10 seconds!</div>
+            </div>
+
+            <button class="start-button">Start</button>
+            <p>Press Start to begin!</p>
+            <div class="win-loss-container">
+                <div>
+                    <h2>Wins: <span class="win">0 </span> </h2>
+                    <h2>Losses: <span class="lose">0</span></h2>
+                </div>
+                <button class="reset-button">Reset Score</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
+
 </html>
