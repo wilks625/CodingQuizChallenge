@@ -10,23 +10,23 @@ const titleInstructions = document.getElementById('title-instructions');
 let intials = document.querySelector("#user-email");
 
 
-timeleft = 5;
+timeleft = 50; //stores how many seconds to start counting down from once start button is clicked
 let timeCounter = document.getElementById('time-count');
 let timerEl = document.getElementById('card-timer');
 let timeTitle = document.getElementById('time-title');
 
-let countRightAnswers =0;
+let countRightAnswers =0;//sets value for correct answers to 0
 let shuffledQuestions, currentQuestionIndex 
 
-startButton.addEventListener('click', startGame)
-nextButton.addEventListener('click', () => {
+startButton.addEventListener('click', startGame) //click listener for start button for startGame function
+nextButton.addEventListener('click', () => { //click listener to cycle through question index and choose a question to display once the next button is clicked
     currentQuestionIndex++
     setNextQuestion()
 })
 
 
-//
-function timer() {
+//function for timer to start counting down once the start button is clicked
+function timer() { 
   var countDown = setInterval(function() {
     timeleft--;
     timeCounter.textContent = timeleft;
@@ -34,32 +34,32 @@ function timer() {
     if (timeleft <=0) {
       clearInterval(countDown);
       timeTitle.classList.add("hide");
-      timeCounter.textContent = "You ran out of time, please try again";
+      timeCounter.textContent = "You ran out of time, please try again"; //message replaces timer if the timer reaches 0 seconds.
     }
   }, 1000);
 }
-//
 
 
 
-//
+
+// This function starts the game once the start button has been clicked
 function startGame() {
   timer();
   countRightAnswers = 0;
-  startButton.classList.add("hide");
-  titleInstructions.classList.add("hide");
+  startButton.classList.add("hide"); //hides the start button
+  titleInstructions.classList.add("hide");//hides the title and instructions so questions
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
+  questionContainerElement.classList.remove("hide"); //unhides question container element so that questions and answers will be displayed
+  setNextQuestion(); //calls on function below
 }
 
-function setNextQuestion() {
+function setNextQuestion() { //shuffles questions that will be displayed once the next button is clicked
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
-function showQuestion(question) {
+function showQuestion(question) { //function to display the questions and answers
   questionElement.innerText = question.question;
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -120,7 +120,7 @@ function clearStatusClass(element) {
   element.classList.remove("wrong");
 }
 
-const questions = [
+const questions = [ //questions with their respective answers
   {
     question:
       "What tag is used to define a container for an external app or plug-in?",
