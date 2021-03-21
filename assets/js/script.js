@@ -69,7 +69,7 @@ function showQuestion(question) { //function to display the questions and answer
   });
 }
 
-function resetState() {
+function resetState() { 
   clearStatusClass(document.body);
   nextButton.classList.add("hide");
   while (answerButtonsElement.firstChild) {
