@@ -1,4 +1,4 @@
-//variables used
+//global variables used within script file
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const highscores = document.getElementById('hs-btn');
@@ -8,7 +8,6 @@ const questionElement =  document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const titleInstructions = document.getElementById('title-instructions');
 let intials = document.querySelector("#user-email");
-
 
 timeleft = 50; //stores how many seconds to start counting down from once start button is clicked
 let timeCounter = document.getElementById('time-count');
@@ -39,15 +38,12 @@ function timer() {
   }, 1000);
 }
 
-
-
-
 // This function starts the game once the start button has been clicked
 function startGame() {
   timer();
   countRightAnswers = 0;
   startButton.classList.add("hide"); //hides the start button
-  titleInstructions.classList.add("hide");//hides the title and instructions so questions
+  titleInstructions.classList.add("hide");//hides the title and instructions so questions will be able to be displayed
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
   questionContainerElement.classList.remove("hide"); //unhides question container element so that questions and answers will be displayed
@@ -81,7 +77,7 @@ function resetState() {
   }
 }
 
-function selectAnswer(e) {
+function selectAnswer(e) { // this function is for adding a score if the user selects the correct answer choice
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
   setStatusClass(document.body, correct);
@@ -106,7 +102,7 @@ function selectAnswer(e) {
   document.getElementById("answer-buttons").classList.add("no-click");
 }
 
-function setStatusClass(element, correct) {
+function setStatusClass(element, correct) { // this function provides verification for if the selected answer is correct or incorrect
   clearStatusClass(element);
   if (correct) {
     element.classList.add("correct");
@@ -120,7 +116,7 @@ function clearStatusClass(element) {
   element.classList.remove("wrong");
 }
 
-const questions = [ //questions with their respective answers
+const questions = [ // javascript objects housing questions with their respective answers
   {
     question:
       "What tag is used to define a container for an external app or plug-in?",
@@ -161,32 +157,14 @@ const questions = [ //questions with their respective answers
 ];
 
 
-// signUpButton.addEventListener("click", function(event) {
-//   event.preventDefault();
+//unfinished local storage
+// initials.textContent = Initials;
 
-//   var email = document.querySelector("#email").value;
-//   var password = document.querySelector("#password").value;
+// submitButton.addEventListener("click", function(event) {
+// event.preventDefault();
 
-//   if (email === "") {
-//     displayMessage("error", "Email cannot be blank");
-//   } else if (password === "") {
-//     displayMessage("error", "Password cannot be blank");
-//   } else {
-//     displayMessage("success", "Registered successfully");
+// var Initials = document.querySelector("#initials").value;
 
-//     localStorage.setItem("email", email);
-//     localStorage.setItem("password", password);
-//     renderLastRegistered();
-//   }
-// });
-
-initials.textContent = Initials;
-
-submitButton.addEventListener("click", function(event) {
-event.preventDefault();
-
-var Initials = document.querySelector("#initials").value;
-
-      localStorage.setItem("initials", Initials);
+//       localStorage.setItem("initials", Initials);
       
-})
+// })
